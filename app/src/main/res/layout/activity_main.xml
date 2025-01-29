@@ -9,6 +9,7 @@
     android:fillViewport="true">
 
     <FrameLayout
+        android:id="@+id/bg_layer_0"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="30dp"
@@ -17,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:background="@drawable/rounded_box"
             android:minWidth="200dp"
             android:minHeight="280dp"
@@ -57,7 +58,7 @@
                     android:id="@+id/lbl_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:fontFamily="@font/roboto_flex"
                     android:shadowColor="#FFFFFF"
                     android:text="@string/title"
@@ -100,9 +101,10 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txt_input_layout_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Email Address..."
+                    android:hint="@string/lbl_hint_email_address"
                     android:textColorHint="#979797"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxCornerRadiusBottomEnd="30dp"
@@ -115,6 +117,7 @@
                     app:placeholderTextColor="#FF9800">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_input_edit_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
@@ -127,9 +130,10 @@
                     android:minHeight="15dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txt_input_layout_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Password..."
+                    android:hint="@string/lbl_hint_password"
                     android:textColorHint="#979797"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxCornerRadiusBottomEnd="30dp"
@@ -142,6 +146,7 @@
                     app:placeholderTextColor="#FF9800">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_input_edit_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
@@ -162,7 +167,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#007FFE"
             android:fontFamily="@font/roboto_flex"
-            android:text="Sign In"
+            android:text="@string/lbl_btn_sign_in"
             android:textSize="34sp" />
 
     </LinearLayout>
