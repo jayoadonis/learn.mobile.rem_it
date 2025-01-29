@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_flex"
-            android:text="Log In"
+            android:text="@string/lbl_log_in"
             android:textColor="#005FBD"
             android:textSize="34sp"
             android:textStyle="bold" />

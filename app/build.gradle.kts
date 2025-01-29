@@ -6,6 +6,9 @@ plugins {
 android {
     namespace = "learn.mobile.rem_it"
     compileSdk = 35
+    this.viewBinding {
+        enable = true;
+    }
 
     defaultConfig {
         applicationId = "learn.mobile.rem_it"
