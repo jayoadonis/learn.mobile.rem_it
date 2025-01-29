@@ -5,5 +5,12 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Remit" parent="Base.Theme.Remit" />
+    <style name="Theme.Remit" parent="Base.Theme.Remit" >
+        <item name="android:windowSplashScreenBackground">
+            @color/bg
+        </item>
+        <item name="android:windowSplashScreenAnimatedIcon">
+            @drawable/icon_title_18
+        </item>
+    </style>
 </resources>

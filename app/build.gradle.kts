@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "learn.mobile.rem_it"
-        minSdk = 23
+        minSdk = 31
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
