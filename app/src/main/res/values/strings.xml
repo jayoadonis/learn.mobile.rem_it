@@ -3,8 +3,12 @@
     <string name="title">REM.IT</string>
     <string name="lbl_hint_email_address">Email Address&#8230;</string>
     <string name="lbl_hint_password">Password&#8230;</string>
+    <string name="lbl_hint_confirm_password">Confirm Password&#8230;</string>
     <string name="lbl_btn_sign_in">Log In</string>
+    <string name="lbl_btn_sign_up">Sign Up</string>
     <string name="lbl_log_in">Log In!</string>
     <string name="btn_log_out">Log Out</string>
+    <string name="lbl_sign_up">Sign Up!</string>
     <string name="lbl_dashboard_title">Dashboard</string>
+    <string name="lbl_already_have_account"><u>Already had an Account?</u></string>
 </resources>

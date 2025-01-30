@@ -4,28 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
-    tools:context=".MainActivity"
-    android:fillViewport="true">
+    tools:context=".SignUpActivity"
+    android:background="@color/bg">
 
     <FrameLayout
-        android:id="@+id/bg_layer_0"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="701dp">
+        android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
             android:background="@drawable/rounded_box"
-            android:minWidth="200dp"
-            android:minHeight="280dp"
-            android:padding="16dp" />
-
+            android:minWidth="180dp"
+            android:minHeight="200dp"
+            android:scaleX="-1"
+            android:text="" />
         <TextView
-            android:id="@+id/lbl_sign_up"
+            android:id="@+id/lbl_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
@@ -34,12 +30,11 @@
             android:gravity="center"
             android:minHeight="50dp"
             android:padding="16dp"
-            android:text="@string/lbl_sign_up"
+            android:text="@string/lbl_already_have_account"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
     </FrameLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,7 +44,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="100dp" />
+            android:minHeight="0dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,13 +60,13 @@
                     android:id="@+id/lbl_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/roboto_flex"
                     android:shadowColor="#FFFFFF"
                     android:text="@string/title"
                     android:textColor="#FF9800"
                     android:textColorHighlight="#00FFCA"
-                    android:textSize="80sp"
+                    android:textSize="60sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -80,22 +75,22 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="20dp" />
+            android:minHeight="0dp" />
 
         <TextView
             android:id="@+id/lbl_log_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_flex"
-            android:text="@string/lbl_log_in"
-            android:textColor="#005FBD"
+            android:text="@string/lbl_sign_up"
+            android:textColor="#FFF"
             android:textSize="34sp"
             android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="20dp" />
+            android:minHeight="80dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -160,6 +155,38 @@
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:inputType="textPassword"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="15dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txt_input_layout_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/lbl_hint_confirm_password"
+                    android:textColorHint="#979797"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxCornerRadiusBottomEnd="30dp"
+                    app:boxCornerRadiusBottomStart="30dp"
+                    app:boxCornerRadiusTopEnd="30dp"
+                    app:boxCornerRadiusTopStart="30dp"
+                    app:boxStrokeColor="#FF9800"
+                    app:helperTextTextColor="#FF9800"
+                    app:hintTextColor="#FF9800"
+                    app:placeholderTextColor="#FF9800">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_input_edit_confirm_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </LinearLayout>
@@ -170,14 +197,13 @@
             android:minHeight="30dp" />
 
         <Button
-            android:id="@+id/btn_sign_in"
+            android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#007FFE"
             android:fontFamily="@font/roboto_flex"
-            android:text="@string/lbl_btn_sign_in"
+            android:text="@string/lbl_btn_sign_up"
             android:textSize="34sp" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import learn.mobile.rem_it.utils.SessionManager
@@ -35,6 +36,12 @@ class MainActivity : AppCompatActivity() {
 
         val btnLogIn: Button
             = this.activityMainBind.btnSignIn;
+        val lblSignUp: TextView = this.activityMainBind.lblSignUp;
+
+        lblSignUp.setOnClickListener {
+            this.navigateToSignUp();
+            super.finish();
+        }
 
         btnLogIn.setOnClickListener {
             val email = this.activityMainBind.txtInputEditEmail.text.toString();
@@ -66,5 +73,9 @@ class MainActivity : AppCompatActivity() {
     private fun navigateToDashboard(): Unit {
         val intentActivityDashboard = Intent(this, DashboardActivity::class.java);
         super.startActivity( intentActivityDashboard );
+    }
+
+    private fun navigateToSignUp(): Unit {
+        super.startActivity( Intent( this, SignUpActivity::class.java) );
     }
 }
