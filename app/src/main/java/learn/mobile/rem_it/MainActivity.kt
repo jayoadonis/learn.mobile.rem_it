@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         lblSignUp.setOnClickListener {
             this.navigateToSignUp();
-            super.finish();
+//            super.finish();
         }
 
         btnLogIn.setOnClickListener {
