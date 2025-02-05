@@ -11,11 +11,14 @@ import learn.mobile.rem_it.utils.SessionManager
 
 import learn.mobile.rem_it.databinding.ActivityMainBinding;
 import learn.mobile.rem_it.models.User
+import learn.mobile.rem_it.models.UserDataAccessObject
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var sessionManager: SessionManager;
     private lateinit var activityMainBind: ActivityMainBinding;
+
+    private lateinit var userDAO: UserDataAccessObject;
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         super.setContentView(this.activityMainBind.root);
 
         this.sessionManager = SessionManager(this);
+
+        this.userDAO = UserDataAccessObject(this);
 
         if( this.sessionManager.isLoggedIn() ) {
             this.navigateToDashboard();
@@ -46,22 +51,30 @@ class MainActivity : AppCompatActivity() {
         btnLogIn.setOnClickListener {
             val email = this.activityMainBind.txtInputEditEmail.text.toString();
             val password = this.activityMainBind.txtInputEditPassword.text.toString();
-            if( email.equals("admin@email.io") && password.equals("123") ) {
+
+            val user = this.userDAO.verifyUser( email, password );
+
+            if( user != null ) {
                 Toast.makeText(it?.context, "Log In Successfully", Toast.LENGTH_SHORT).show()
-                println(String.format("%s", "Got it... But not best practice."))
+//                println(String.format("%s", "Got it... But not best practice. user_name: " + user.userName))
 
                 this.sessionManager.saveUserSession(
-                    User(null, email, true)
+                    User(user._ID, user.userID, user.userName, user.email, true)
                 );
 
                 this.navigateToDashboard();
                 super.finish();
             }
             else {
-                println(String.format("%s", "Better luck next time..."))
+//                println(String.format("%s", "Better luck next time..."))
                 Toast.makeText(it?.context, "Unauthorized access is prohibited!", Toast.LENGTH_SHORT).show()
             }
         }
+
+//
+//        for( user in this.userDAO.getAllUsers() ) {
+//            println( ( user._ID ).toString() + " : " + user.userID + " : " + user.userName + " : " + user.email );
+//        }
 
 //        btnLogIn.setOnClickListener(object : View.OnClickListener {
 //            override fun onClick(v: View?) {

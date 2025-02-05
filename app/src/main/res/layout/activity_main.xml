@@ -179,6 +179,11 @@
             android:text="@string/lbl_btn_sign_in"
             android:textSize="34sp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

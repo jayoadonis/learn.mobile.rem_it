@@ -2,6 +2,7 @@
     <string name="app_name">rem-it</string>
     <string name="title">REM.IT</string>
     <string name="lbl_hint_email_address">Email Address&#8230;</string>
+    <string name="lbl_hint_user_name">User Name&#8230;</string>
     <string name="lbl_hint_password">Password&#8230;</string>
     <string name="lbl_hint_confirm_password">Confirm Password&#8230;</string>
     <string name="lbl_btn_sign_in">Log In</string>

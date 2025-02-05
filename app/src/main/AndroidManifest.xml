@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Remit">
         <activity
-            android:name=".SignUpActivity"
+            android:name="learn.mobile.rem_it.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".DashboardActivity"
+            android:name="learn.mobile.rem_it.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="learn.mobile.rem_it.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
