@@ -3,6 +3,7 @@ package learn.mobile.rem_it
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 //            super.finish();
         }
 
+
         btnLogIn.setOnClickListener {
             val email = this.activityMainBind.txtInputEditEmail.text.toString();
             val password = this.activityMainBind.txtInputEditPassword.text.toString();
@@ -71,10 +73,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//
-//        for( user in this.userDAO.getAllUsers() ) {
-//            println( ( user._ID ).toString() + " : " + user.userID + " : " + user.userName + " : " + user.email );
-//        }
+        val dbPath = this.applicationContext.getDatabasePath("rem_it.db").absolutePath
+        Log.d(":::: DatabasePath", "DB Path: $dbPath")
+
+        for( user in this.userDAO.getAllUsers() ) {
+            println( ( user._ID ).toString() + " : " + user.userID + " : " + user.userName + " : " + user.email );
+        }
 
 //        btnLogIn.setOnClickListener(object : View.OnClickListener {
 //            override fun onClick(v: View?) {

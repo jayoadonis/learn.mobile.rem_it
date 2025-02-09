@@ -10,6 +10,7 @@ class UserDataAccessObject( context:Context )
     :SQLiteOpenHelper( context, DATABASE_NAME,null, DATABASE_VERSION )
 {
 
+
     companion object{
         private const val DATABASE_NAME: String = "rem_it.db"
         private const val DATABASE_VERSION: Int = 4
@@ -23,7 +24,7 @@ class UserDataAccessObject( context:Context )
     }
 
     override fun onCreate(db:SQLiteDatabase){
-        val createTableQuery="""
+        val createTableQuery = """
             CREATE TABLE IF NOT EXISTS $TABLE_NAME (
                 $_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $USER_ID TEXT UNIQUE NOT NULL,

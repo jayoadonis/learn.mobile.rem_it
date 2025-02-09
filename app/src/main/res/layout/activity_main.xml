@@ -129,7 +129,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:inputType="textEmailAddress"/>
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/colorText"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Space
@@ -160,7 +161,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:inputType="textPassword"/>
+                        android:inputType="textPassword"
+                        android:textColor="@color/colorText"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </LinearLayout>

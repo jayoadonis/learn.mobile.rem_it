@@ -5,25 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DashboardActivity"
-    android:background="@color/bg">
+    android:background="@color/bg"
+    android:padding="15dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/lbl_dashboard_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_dashboard_title"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_view_todos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="80dp"
+        android:padding="16dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_dashboard_title" />
 
-        <TextView
-            android:id="@+id/lbl_dashboard_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_dashboard_title"
-            android:textSize="34sp" />
+    <Button
+        android:id="@+id/btn_dashboard_log_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:text="@string/btn_log_out"
+        android:textColor="#3F51B5"
+        android:textColorHighlight="#FF9800"
+        android:textColorLink="#FF9800"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycle_view_todos" />
 
-        <Button
-            android:id="@+id/btn_dashboard_log_out"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_log_out" />
-    </LinearLayout>
+<!--    <ListView-->
+<!--        android:id="@+id/list_view_todo"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="70dp"-->
+<!--        android:layout_marginBottom="80dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/lbl_dashboard_title">-->
+
+<!--    </ListView>-->
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
