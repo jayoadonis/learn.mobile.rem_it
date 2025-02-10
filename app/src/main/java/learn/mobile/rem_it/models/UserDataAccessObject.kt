@@ -7,9 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper
 import kotlin.math.abs
 
 class UserDataAccessObject( context:Context )
-    :SQLiteOpenHelper( context, DATABASE_NAME,null, DATABASE_VERSION )
+    : SQLiteOpenHelper( context, DATABASE_NAME,null, DATABASE_VERSION )
 {
-
 
     companion object{
         private const val DATABASE_NAME: String = "rem_it.db"

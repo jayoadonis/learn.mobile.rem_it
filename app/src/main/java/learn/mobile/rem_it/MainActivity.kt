@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToDashboard(): Unit {
-        val intentActivityDashboard = Intent(this, DashboardActivity::class.java);
+        val intentActivityDashboard = Intent(this, DashboardActivityI::class.java);
         super.startActivity( intentActivityDashboard );
     }
 
