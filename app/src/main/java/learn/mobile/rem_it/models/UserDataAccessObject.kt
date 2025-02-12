@@ -98,7 +98,8 @@ class UserDataAccessObject( context:Context )
         return null;
     }
 
-    fun getUserByEmail(userEmail : String ):User?{
+    fun getUserByEmail(userEmail : String? ):User?{
+        if( userEmail == null ) return null;
         val db = super.getReadableDatabase();
         val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $USER_EMAIL = ?",arrayOf(userEmail))
 
@@ -107,7 +108,8 @@ class UserDataAccessObject( context:Context )
                 cursor.getInt(cursor.getColumnIndexOrThrow(_ID)),
                 cursor.getString(cursor.getColumnIndexOrThrow(USER_ID)),
                 cursor.getString(cursor.getColumnIndexOrThrow(USER_NAME)),
-                cursor.getString(cursor.getColumnIndexOrThrow(USER_EMAIL))
+                cursor.getString(cursor.getColumnIndexOrThrow(USER_EMAIL)),
+                cursor.getString(cursor.getColumnIndexOrThrow(USER_PASSWORD))
             )
             cursor.close()
             db.close()

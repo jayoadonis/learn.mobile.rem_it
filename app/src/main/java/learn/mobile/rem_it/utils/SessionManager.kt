@@ -17,8 +17,9 @@ class SessionManager(context: Context) {
 
     public companion object {
         private const val IS_LOGGED_IN = "isLoggedIn";
+        private const val EMAIL = "email";
         private const val USER_NAME = "userName";
-        private const val USER_ID = "user_id";
+        private const val USER_ID = "userId";
         private const val _ID = "_id";
     }
 
@@ -29,6 +30,7 @@ class SessionManager(context: Context) {
             throw InvalidParameterException("Invalid ID to be 'cookified' or session.")
         this.sessionController.putInt(SessionManager._ID, user._ID );
         this.sessionController.putBoolean(SessionManager.IS_LOGGED_IN, user.isLoggedIn );
+        this.sessionController.putString(SessionManager.EMAIL, user.email );
         this.sessionController.putString(SessionManager.USER_NAME, user.userName );
         this.sessionController.putString(SessionManager.USER_ID, user.userID );
         this.sessionController.apply();
@@ -42,6 +44,10 @@ class SessionManager(context: Context) {
         return this.session.getString(SessionManager.USER_NAME, null);
     }
 
+    public fun getEmail(): String? {
+        return this.session.getString( EMAIL, "N/a")
+    }
+
     public fun getUserId(): String? {
         return this.session.getString( USER_ID, null);
     }
@@ -53,6 +59,7 @@ class SessionManager(context: Context) {
     public fun clearSession(): Unit {
         this.sessionController.putBoolean(IS_LOGGED_IN, false);
         this.sessionController.putString(USER_NAME, null);
+        this.sessionController.putString(EMAIL, null);
         this.sessionController.apply();
     }
 

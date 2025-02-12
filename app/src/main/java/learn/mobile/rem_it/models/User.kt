@@ -5,8 +5,8 @@ data class User(
     public val userID: String?,
     public val userName: String?,
     public val email: String?,
-    public val isLoggedIn: Boolean = false,
-    public val password: String = "[protected]"
+    public val password: String = "[protected]",
+    public var isLoggedIn: Boolean = false
 ) {
 
 //    public fun getEmail(): String? {

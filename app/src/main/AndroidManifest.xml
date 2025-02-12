@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Remit">
         <activity
+            android:name=".AboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity

@@ -50,6 +50,17 @@ class DashboardActivityI: AppCompatActivity() {
         }
 
         btnSetting.setOnClickListener {
+            super.startActivity(Intent(this, SettingActivity::class.java));
         }
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        val USER = this.userDAO.getUserByEmail(this.sessionManager.getEmail());
+
+
+        var txtTitle = this.activityDashboardBind.txtViewWelcome;
+
+        txtTitle.text = "Welcome, ${USER?.userName?:"N/a"}"
     }
 }

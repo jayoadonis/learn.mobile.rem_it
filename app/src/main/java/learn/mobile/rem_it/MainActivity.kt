@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 //                println(String.format("%s", "Got it... But not best practice. user_name: " + user.userName))
 
                 this.sessionManager.saveUserSession(
-                    User(user._ID, user.userID, user.userName, user.email, true)
+                    User(user._ID, user.userID, user.userName, user.email, user.password, true)
                 );
 
                 this.navigateToDashboard();
