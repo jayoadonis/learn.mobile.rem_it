@@ -26,9 +26,31 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var btnSave: Button;
 
     private lateinit var tiePassword: TextInputEditText;
+    private lateinit var tieEmail: TextInputEditText;
+    private lateinit var tieUserName: TextInputEditText;
 
     private lateinit var btnBack: Button;
     private lateinit var btnReset: Button;
+
+    public companion object {
+//        var CAN_CHANGE = false;
+        private var IS_EMAIL_VALID = true;
+        private var IS_USER_NAME_VALID = true;
+
+        public fun isValidEmail(email: String?): Boolean {
+            val emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+
+            return email?.matches(emailPattern.toRegex())?:false;
+        }
+    }
+
+
+    public override fun onDestroy() {
+        super.onDestroy()
+//        ProfileActivity.CAN_CHANGE = false;
+        ProfileActivity.IS_EMAIL_VALID = false;
+        ProfileActivity.IS_USER_NAME_VALID = false;
+    }
 
     public override fun onCreate(saveInstanceState: Bundle?): Unit {
         super.onCreate(saveInstanceState)
@@ -39,8 +61,8 @@ class ProfileActivity : AppCompatActivity() {
         this.userDAO = UserDataAccessObject(this);
         this.sessionManager = SessionManager(this);
 
-        var tvUserName: TextView = this.activityProfileBinding.txtViewUserName
-        var tvEmail: TextView = this.activityProfileBinding.txtViewEmail
+        val TV_USER_NAME: TextView = this.activityProfileBinding.txtViewUserName
+        val TV_EMAIL: TextView = this.activityProfileBinding.txtViewEmail
 
         this.btnBack = this.activityProfileBinding.btnBack;
 
@@ -50,53 +72,69 @@ class ProfileActivity : AppCompatActivity() {
         this.btnReset = this.activityProfileBinding.btnReset;
         this.btnReset.isEnabled = false;
 
-        var tieUserName = this.activityProfileBinding.txtInputEditUserName
-        var tieEmail = this.activityProfileBinding.txtInputEditEmail
+        this.tieUserName = this.activityProfileBinding.txtInputEditUserName
+        this.tieEmail = this.activityProfileBinding.txtInputEditEmail
         this.tiePassword = this.activityProfileBinding.txtInputEditPassword
 
         val USER_NAME = this.sessionManager.getUserName()?:"N/a";
         val EMAIL = this.sessionManager.getEmail()?:"N/a";
 
-        tvUserName.text = USER_NAME;
-        tvEmail.text = EMAIL;
+        TV_USER_NAME.text = USER_NAME;
+        TV_EMAIL.text = EMAIL;
 
-        tieUserName.setText(USER_NAME);
-        tieEmail.setText(EMAIL);
-        tiePassword.setText("")
+        this.tieUserName.setText(USER_NAME);
+        this.tieEmail.setText(EMAIL);
+        this.tiePassword.setText("")
+
+        val USER = this.userDAO.getUserByEmail(EMAIL)
+        USER?.isLoggedIn = this.sessionManager.isLoggedIn();
+
+        this.addTextWatcher( this.tieUserName );
+        this.addTextWatcher( this.tieEmail );
+        this.addTextWatcher( this.tiePassword );
 
         btnSave.setOnClickListener {
-            this.userDAO.updateUserById(
-                this.sessionManager.getId(),
-                tieUserName.text.toString(),
-                tieEmail.text.toString(),
-                tiePassword.text.toString().ifEmpty {
-                    userDAO.getUserByEmail(sessionManager.getEmail())?.password ?: ""
+
+            if( USER != null && USER.isLoggedIn) {
+
+                val NUM_OF_AFFECTED: Int = this@ProfileActivity.userDAO.updateUserById(
+                    this@ProfileActivity.sessionManager.getId(),
+                    this@ProfileActivity.tieUserName.text.toString().trim(),
+                    this@ProfileActivity.tieEmail.text.toString().trim(),
+                    this@ProfileActivity.tiePassword.text.toString().ifEmpty {
+                        USER.password
+                    }
+                );
+
+                if( NUM_OF_AFFECTED > 0 ) {
+                    Toast.makeText(this@ProfileActivity, "Successfully updated", Toast.LENGTH_LONG)
+                        .show();
+
+                    //REM: [TODO, OPTIMIZED]
+                    val NEW_USER = this@ProfileActivity.userDAO.getUserByEmail(
+                        this@ProfileActivity.tieEmail.text.toString().trim()
+                    );
+
+                    NEW_USER?.isLoggedIn = this@ProfileActivity.sessionManager.isLoggedIn();
+
+                    this@ProfileActivity.sessionManager.saveUserSession(NEW_USER);
+
+                    TV_USER_NAME.text = this@ProfileActivity.sessionManager.getUserName();
+                    TV_EMAIL.text = this@ProfileActivity.sessionManager.getEmail();
+                    this@ProfileActivity.tiePassword.setText("")
+
+                    this@ProfileActivity.btnSave.isEnabled = false;
+                    this@ProfileActivity.btnReset.isEnabled = false;
+
+                    return@setOnClickListener;
                 }
-            );
-
-            val USER = this.userDAO.getUserByEmail(tieEmail.text.toString())
-            USER?.isLoggedIn = this.sessionManager.isLoggedIn();
-
-            if( USER != null ) {
-                this.sessionManager.saveUserSession(USER);
-                tvUserName.text = USER.userName;
-                tvEmail.text = USER.email;
-
-                Toast.makeText(this, "Successfully updated", Toast.LENGTH_LONG).show();
-
-                btnSave.isEnabled = false;
-                btnReset.isEnabled = false;
             }
+            Toast.makeText(this@ProfileActivity, "Error: Something went wrong.", Toast.LENGTH_LONG).show();
         }
 
-        this.addTextWatcher( tieUserName, sessionManager.getUserName() );
-        this.addTextWatcher( tieEmail, sessionManager.getEmail() );
-        this.addTextWatcher( tiePassword, sessionManager.getEmail() );
 
         this.btnBack.setOnClickListener {
             super.startActivity( Intent(this, DashboardActivityI::class.java) );
-
-
         }
 
         this.btnReset.setOnClickListener {
@@ -112,21 +150,48 @@ class ProfileActivity : AppCompatActivity() {
 
     }
 
-    private fun addTextWatcher(editText: TextInputEditText, cmpTo: String?) {
+    private fun addTextWatcher(editText: TextInputEditText ) {
+
         editText.addTextChangedListener(object : TextWatcher {
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
 
+                val TXT_INPUT = s.toString().trim();
 
-                var txt = s.toString().trim();
+                when( editText ) {
+                    tieUserName -> {
+                        ProfileActivity.IS_USER_NAME_VALID = !TXT_INPUT.isBlank();
+                        this@ProfileActivity.btnReset.isEnabled = true;
+                        this@ProfileActivity.btnSave.isEnabled = ProfileActivity.IS_USER_NAME_VALID
+                                && ProfileActivity.IS_EMAIL_VALID;
+                    }
+                    tieEmail -> {
+                        ProfileActivity.IS_EMAIL_VALID = (!TXT_INPUT.isBlank()
+                                && ProfileActivity.isValidEmail( TXT_INPUT ));
+                        this@ProfileActivity.btnReset.isEnabled = true;
+                        this@ProfileActivity.btnSave.isEnabled = ProfileActivity.IS_USER_NAME_VALID
+                                && ProfileActivity.IS_EMAIL_VALID;
 
-                btnSave.isEnabled = !txt.isBlank() &&
-                        ( txt != cmpTo );
+                    }
+                    tiePassword -> {
+                        this@ProfileActivity.btnReset.isEnabled = true;
+                        this@ProfileActivity.btnSave.isEnabled  = ProfileActivity.IS_USER_NAME_VALID
+                                && ProfileActivity.IS_EMAIL_VALID;
+                    }
+                    else -> {
+                        this@ProfileActivity.btnReset.isEnabled = false;
+                        this@ProfileActivity.btnSave.isEnabled = false;
+                    }
+                }
 
-                btnReset.isEnabled = s.toString() != cmpTo;
+//                btnSave.isEnabled = !txt.isBlank() &&
+//                        ( txt != cmpTo || editText == tiePassword );
+//
+//                btnReset.isEnabled = s.toString() != cmpTo || editText == tiePassword ;
             }
         })
     }

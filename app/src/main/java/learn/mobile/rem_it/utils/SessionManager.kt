@@ -24,8 +24,11 @@ class SessionManager(context: Context) {
     }
 
     public fun saveUserSession(
-        user: User
+        user: User?
     ): Unit {
+
+        if( user == null ) return;
+
         if( user._ID == null || user._ID == 0)
             throw InvalidParameterException("Invalid ID to be 'cookified' or session.")
         this.sessionController.putInt(SessionManager._ID, user._ID );

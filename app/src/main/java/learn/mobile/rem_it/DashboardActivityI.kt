@@ -31,10 +31,9 @@ class DashboardActivityI: AppCompatActivity() {
         var btnProfile = this.activityDashboardBind.btnProfile;
         var btnSetting  = this.activityDashboardBind.btnSetting;
 
-
         txtTitle.text = buildString {
             append(txtTitle.text.toString() + ", ")
-            append(sessionManager.getUserName())
+            append(this@DashboardActivityI.sessionManager.getUserName())
         };
 
 
@@ -56,6 +55,7 @@ class DashboardActivityI: AppCompatActivity() {
 
     public override fun onResume() {
         super.onResume()
+
         val USER = this.userDAO.getUserByEmail(this.sessionManager.getEmail());
 
 

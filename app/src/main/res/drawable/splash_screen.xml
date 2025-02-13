@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/bg" />  <!-- Background color -->
+    <item
+        android:id="@+id/ic"
+        android:drawable="@drawable/icon_title_18"
+        android:gravity="center"
+        android:height="100dp"
+        android:width="100dp"/>
+</layer-list>

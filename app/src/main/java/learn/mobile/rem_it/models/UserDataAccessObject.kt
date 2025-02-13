@@ -128,7 +128,7 @@ class UserDataAccessObject( context:Context )
             put(USER_EMAIL,userEmail)
             put(USER_PASSWORD,userPassword)
         }
-        val rowsAffected=db.update(TABLE_NAME, values,"$_ID = ?", arrayOf(_id.toString()))
+        val rowsAffected = db.update(TABLE_NAME, values,"$_ID = ?", arrayOf(_id.toString()))
         db.close()
         return rowsAffected
     }
