@@ -66,4 +66,11 @@ class SessionManager(context: Context) {
         this.sessionController.apply();
     }
 
+    //REM: [TODO] .|. Is this more pronounce or semantically correct?
+    public fun close(): Unit {
+
+        this.sessionController.clear();
+        this.sessionController.commit();
+    }
+
 }

@@ -4,9 +4,15 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg">#FFECDC</color>
     <color name="orange">#FF9800</color>
+    <color name="blue">#005FBD</color>
 
 
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorBackground">#FFFFFF</color>
-    <color name="colorText">#000000</color>
+    <color name="colorPrimary">@color/orange</color>
+    <color name="colorSecondary">@color/white</color>
+    <color name="colorBackground">@color/bg</color>
+    <color name="colorText">@color/blue</color>
+    <color name="colorTxtInputText">@color/blue</color>
+    <color name="colorBgInputText">@color/white</color>
+    <color name="colorTxtBtn">@color/black</color>
+    <color name="colorBgBtn">@color/orange</color>
 </resources>

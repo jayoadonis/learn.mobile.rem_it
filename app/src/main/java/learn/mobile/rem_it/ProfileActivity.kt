@@ -1,6 +1,8 @@
 package learn.mobile.rem_it
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -45,11 +47,27 @@ class ProfileActivity : AppCompatActivity() {
     }
 
 
-    public override fun onDestroy() {
+    public override fun onResume(): Unit {
+        super.onResume();
+    }
+
+    public override fun onDestroy(): Unit {
         super.onDestroy()
 //        ProfileActivity.CAN_CHANGE = false;
-        ProfileActivity.IS_EMAIL_VALID = false;
-        ProfileActivity.IS_USER_NAME_VALID = false;
+//        ProfileActivity.IS_EMAIL_VALID = false;
+//        ProfileActivity.IS_USER_NAME_VALID = false;
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("IS_EMAIL_VALID", ProfileActivity.IS_EMAIL_VALID)
+        outState.putBoolean("IS_USER_NAME_VALID", ProfileActivity.IS_USER_NAME_VALID)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        ProfileActivity.IS_EMAIL_VALID = savedInstanceState.getBoolean("IS_EMAIL_VALID")
+        ProfileActivity.IS_USER_NAME_VALID = savedInstanceState.getBoolean("IS_USER_NAME_VALID")
     }
 
     public override fun onCreate(saveInstanceState: Bundle?): Unit {
@@ -67,10 +85,13 @@ class ProfileActivity : AppCompatActivity() {
         this.btnBack = this.activityProfileBinding.btnBack;
 
         this.btnSave = this.activityProfileBinding.btnSave
-        this.btnSave.isEnabled = false;
 
         this.btnReset = this.activityProfileBinding.btnReset;
-        this.btnReset.isEnabled = false;
+
+        super.runOnUiThread {
+            this.btnSave.isEnabled = false;
+            this.btnReset.isEnabled = false;
+        }
 
         this.tieUserName = this.activityProfileBinding.txtInputEditUserName
         this.tieEmail = this.activityProfileBinding.txtInputEditEmail
@@ -107,6 +128,12 @@ class ProfileActivity : AppCompatActivity() {
                 );
 
                 if( NUM_OF_AFFECTED > 0 ) {
+
+                    this@ProfileActivity.btnSave.post {
+                        this@ProfileActivity.btnSave.isEnabled = false
+                        this@ProfileActivity.btnReset.isEnabled = false
+                    }
+
                     Toast.makeText(this@ProfileActivity, "Successfully updated", Toast.LENGTH_LONG)
                         .show();
 
@@ -121,10 +148,10 @@ class ProfileActivity : AppCompatActivity() {
 
                     TV_USER_NAME.text = this@ProfileActivity.sessionManager.getUserName();
                     TV_EMAIL.text = this@ProfileActivity.sessionManager.getEmail();
-                    this@ProfileActivity.tiePassword.setText("")
 
-                    this@ProfileActivity.btnSave.isEnabled = false;
-                    this@ProfileActivity.btnReset.isEnabled = false;
+                    tieUserName.setText(sessionManager.getUserName())
+                    tieEmail.setText(sessionManager.getEmail())
+                    tiePassword.setText("")
 
                     return@setOnClickListener;
                 }

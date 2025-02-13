@@ -108,23 +108,27 @@
                     android:layout_height="match_parent"
                     android:hint="@string/lbl_hint_user_name"
                     android:textColorHint="#979797"
-                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundColor="@color/colorBgInputText"
                     app:boxCornerRadiusBottomEnd="30dp"
                     app:boxCornerRadiusBottomStart="30dp"
                     app:boxCornerRadiusTopEnd="30dp"
                     app:boxCornerRadiusTopStart="30dp"
-                    app:boxStrokeColor="#FF9800"
-                    app:helperTextTextColor="#FF9800"
-                    app:hintTextColor="#FF9800"
-                    app:placeholderTextColor="#FF9800">
+                    app:boxStrokeColor="@color/colorTxtInputText"
+                    app:helperTextTextColor="@color/colorTxtInputText"
+                    app:hintTextColor="@color/colorTxtInputText"
+                    app:placeholderTextColor="@color/colorTxtInputText"
+                    app:cursorColor="@color/colorTxtInputText"
+                    app:endIconTint="@color/colorTxtInputText"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txt_input_edit_user_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
+                        android:inputType="text"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorTxtInputText"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,15 +143,17 @@
                     android:layout_height="match_parent"
                     android:hint="@string/lbl_hint_email_address"
                     android:textColorHint="#979797"
-                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundColor="@color/colorBgInputText"
                     app:boxCornerRadiusBottomEnd="30dp"
                     app:boxCornerRadiusBottomStart="30dp"
                     app:boxCornerRadiusTopEnd="30dp"
                     app:boxCornerRadiusTopStart="30dp"
-                    app:boxStrokeColor="#FF9800"
-                    app:helperTextTextColor="#FF9800"
-                    app:hintTextColor="#FF9800"
-                    app:placeholderTextColor="#FF9800">
+                    app:boxStrokeColor="@color/colorTxtInputText"
+                    app:helperTextTextColor="@color/colorTxtInputText"
+                    app:hintTextColor="@color/colorTxtInputText"
+                    app:placeholderTextColor="@color/colorTxtInputText"
+                    app:cursorColor="@color/colorTxtInputText"
+                    app:endIconTint="@color/colorTxtInputText">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txt_input_edit_email"
@@ -155,7 +161,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:inputType="textEmailAddress"/>
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/colorTxtInputText"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Space
@@ -169,15 +176,17 @@
                     android:layout_height="match_parent"
                     android:hint="@string/lbl_hint_password"
                     android:textColorHint="#979797"
-                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundColor="@color/colorBgInputText"
                     app:boxCornerRadiusBottomEnd="30dp"
                     app:boxCornerRadiusBottomStart="30dp"
                     app:boxCornerRadiusTopEnd="30dp"
                     app:boxCornerRadiusTopStart="30dp"
-                    app:boxStrokeColor="#FF9800"
-                    app:helperTextTextColor="#FF9800"
-                    app:hintTextColor="#FF9800"
-                    app:placeholderTextColor="#FF9800"
+                    app:boxStrokeColor="@color/colorTxtInputText"
+                    app:helperTextTextColor="@color/colorTxtInputText"
+                    app:hintTextColor="@color/colorTxtInputText"
+                    app:placeholderTextColor="@color/colorTxtInputText"
+                    app:cursorColor="@color/colorTxtInputText"
+                    app:endIconTint="@color/colorTxtInputText"
                     app:endIconMode="password_toggle">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -186,7 +195,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:inputType="textPassword"/>
+                        android:inputType="textPassword"
+                        android:textColor="@color/colorTxtInputText"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -201,15 +211,17 @@
                     android:layout_height="match_parent"
                     android:hint="@string/lbl_hint_confirm_password"
                     android:textColorHint="#979797"
-                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundColor="@color/colorBgInputText"
                     app:boxCornerRadiusBottomEnd="30dp"
                     app:boxCornerRadiusBottomStart="30dp"
                     app:boxCornerRadiusTopEnd="30dp"
                     app:boxCornerRadiusTopStart="30dp"
-                    app:boxStrokeColor="#FF9800"
-                    app:helperTextTextColor="#FF9800"
-                    app:hintTextColor="#FF9800"
-                    app:placeholderTextColor="#FF9800"
+                    app:boxStrokeColor="@color/colorTxtInputText"
+                    app:helperTextTextColor="@color/colorTxtInputText"
+                    app:hintTextColor="@color/colorTxtInputText"
+                    app:placeholderTextColor="@color/colorTxtInputText"
+                    app:cursorColor="@color/colorTxtInputText"
+                    app:endIconTint="@color/colorTxtInputText"
                     app:endIconMode="password_toggle">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -218,7 +230,8 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorTxtInputText"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -236,7 +249,8 @@
             android:backgroundTint="#007FFE"
             android:fontFamily="@font/roboto_flex"
             android:text="@string/lbl_btn_sign_up"
-            android:textSize="34sp" />
+            android:textSize="34sp"
+            android:textColor="@color/colorSecondary"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

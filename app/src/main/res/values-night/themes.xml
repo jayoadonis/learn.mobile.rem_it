@@ -4,6 +4,16 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
         <item name="android:windowBackground">@color/colorBackground</item>
+    </style>
+
+    <style name="Theme.RemIt" parent="Base.Theme.RemIt"  >
+        <item name="android:windowSplashScreenBackground">
+            @color/bg
+        </item>
+        <item name="android:windowSplashScreenAnimatedIcon">
+            @drawable/icon_title_18
+        </item>
     </style>
 </resources>
