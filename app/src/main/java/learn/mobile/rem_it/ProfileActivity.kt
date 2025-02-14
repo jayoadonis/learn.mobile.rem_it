@@ -35,9 +35,11 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var btnReset: Button;
 
     public companion object {
-//        var CAN_CHANGE = false;
-        private var IS_EMAIL_VALID = true;
-        private var IS_USER_NAME_VALID = true;
+//        var canChange = false;
+        private var isEmailValid = true;
+        private var isUserNameValid = true;
+
+//        public const val SAMPLE_CONST_VAL = 1;
 
         public fun isValidEmail(email: String?): Boolean {
             val emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
@@ -53,21 +55,21 @@ class ProfileActivity : AppCompatActivity() {
 
     public override fun onDestroy(): Unit {
         super.onDestroy()
-//        ProfileActivity.CAN_CHANGE = false;
-//        ProfileActivity.IS_EMAIL_VALID = false;
-//        ProfileActivity.IS_USER_NAME_VALID = false;
+//        ProfileActivity.canChange = false;
+//        ProfileActivity.isEmailValid = false;
+//        ProfileActivity.isUserNameValid = false;
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putBoolean("IS_EMAIL_VALID", ProfileActivity.IS_EMAIL_VALID)
-        outState.putBoolean("IS_USER_NAME_VALID", ProfileActivity.IS_USER_NAME_VALID)
+        outState.putBoolean("isEmailValid", ProfileActivity.isEmailValid)
+        outState.putBoolean("isUserNameValid", ProfileActivity.isUserNameValid)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        ProfileActivity.IS_EMAIL_VALID = savedInstanceState.getBoolean("IS_EMAIL_VALID")
-        ProfileActivity.IS_USER_NAME_VALID = savedInstanceState.getBoolean("IS_USER_NAME_VALID")
+        ProfileActivity.isEmailValid = savedInstanceState.getBoolean("isEmailValid")
+        ProfileActivity.isUserNameValid = savedInstanceState.getBoolean("isUserNameValid")
     }
 
     public override fun onCreate(saveInstanceState: Bundle?): Unit {
@@ -191,23 +193,23 @@ class ProfileActivity : AppCompatActivity() {
 
                 when( editText ) {
                     tieUserName -> {
-                        ProfileActivity.IS_USER_NAME_VALID = !TXT_INPUT.isBlank();
+                        ProfileActivity.isUserNameValid = !TXT_INPUT.isBlank();
                         this@ProfileActivity.btnReset.isEnabled = true;
-                        this@ProfileActivity.btnSave.isEnabled = ProfileActivity.IS_USER_NAME_VALID
-                                && ProfileActivity.IS_EMAIL_VALID;
+                        this@ProfileActivity.btnSave.isEnabled = ProfileActivity.isUserNameValid
+                                && ProfileActivity.isEmailValid;
                     }
                     tieEmail -> {
-                        ProfileActivity.IS_EMAIL_VALID = (!TXT_INPUT.isBlank()
+                        ProfileActivity.isEmailValid = (!TXT_INPUT.isBlank()
                                 && ProfileActivity.isValidEmail( TXT_INPUT ));
                         this@ProfileActivity.btnReset.isEnabled = true;
-                        this@ProfileActivity.btnSave.isEnabled = ProfileActivity.IS_USER_NAME_VALID
-                                && ProfileActivity.IS_EMAIL_VALID;
+                        this@ProfileActivity.btnSave.isEnabled = ProfileActivity.isUserNameValid
+                                && ProfileActivity.isEmailValid;
 
                     }
                     tiePassword -> {
                         this@ProfileActivity.btnReset.isEnabled = true;
-                        this@ProfileActivity.btnSave.isEnabled  = ProfileActivity.IS_USER_NAME_VALID
-                                && ProfileActivity.IS_EMAIL_VALID;
+                        this@ProfileActivity.btnSave.isEnabled  = ProfileActivity.isUserNameValid
+                                && ProfileActivity.isEmailValid;
                     }
                     else -> {
                         this@ProfileActivity.btnReset.isEnabled = false;

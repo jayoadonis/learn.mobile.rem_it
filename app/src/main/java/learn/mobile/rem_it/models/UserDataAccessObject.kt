@@ -78,7 +78,7 @@ class UserDataAccessObject( context:Context )
     fun verifyUser( userEmail: String, password: String ): User? {
 
         val db = super.getReadableDatabase();
-        //REM: TODO .|. Oh my....
+        //REM: TODO .|. Oh my.... use "utils/hash_and_verify.kt"
         val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $USER_EMAIL = ? AND $USER_PASSWORD = ?",arrayOf(userEmail, password))
 
         if(cursor.moveToFirst()){
