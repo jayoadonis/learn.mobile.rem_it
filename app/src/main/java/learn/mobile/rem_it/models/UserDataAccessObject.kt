@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import kotlin.math.abs
 
-class UserDataAccessObject( context:Context )
+class UserDataAccessObject( context: Context )
     : SQLiteOpenHelper( context, DATABASE_NAME,null, DATABASE_VERSION )
 {
 

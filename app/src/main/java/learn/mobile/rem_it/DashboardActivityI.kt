@@ -51,6 +51,12 @@ class DashboardActivityI: AppCompatActivity() {
         btnSetting.setOnClickListener {
             super.startActivity(Intent(this, SettingActivity::class.java));
         }
+
+        this.activityDashboardBind.btnCalc.setOnClickListener {
+            super.startActivity(
+                Intent( this, SimpleCalcActivity::class.java )
+            );
+        }
     }
 
     public override fun onResume() {
@@ -61,6 +67,6 @@ class DashboardActivityI: AppCompatActivity() {
 
         var txtTitle = this.activityDashboardBind.txtViewWelcome;
 
-        txtTitle.text = "Welcome, ${USER?.userName?:"N/a"}"
+        "Welcome, ${USER?.userName?:"N/a"}".also { txtTitle.text = it }
     }
 }

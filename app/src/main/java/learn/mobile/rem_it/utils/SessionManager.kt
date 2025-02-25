@@ -5,15 +5,28 @@ import android.content.SharedPreferences
 import learn.mobile.rem_it.models.User
 import java.security.InvalidParameterException
 
-class SessionManager(context: Context) {
+class SessionManager/*(context: Context)*/{
 
-    private val session: SharedPreferences
-        = context.getSharedPreferences(
+//    private val session: SharedPreferences
+//        = context.getSharedPreferences(
+//            "UserSession",
+//            Context.MODE_PRIVATE
+//        );
+//    private val sessionController: SharedPreferences.Editor
+//        = this.session.edit();
+
+    private val session: SharedPreferences;
+    private val sessionController: SharedPreferences.Editor;
+
+    public constructor(
+        context: Context
+    ) {
+        this.session = context.getSharedPreferences(
             "UserSession",
             Context.MODE_PRIVATE
         );
-    private val sessionController: SharedPreferences.Editor
-        = this.session.edit();
+        this.sessionController = this.session.edit();
+    }
 
     public companion object {
         private const val IS_LOGGED_IN = "isLoggedIn";

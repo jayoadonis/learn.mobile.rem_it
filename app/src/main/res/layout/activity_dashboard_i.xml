@@ -62,4 +62,12 @@
         android:textColor="@color/colorTxtBtn"
         android:background="@drawable/btn_background"/>
 
+    <Button
+        android:id="@+id/btnCalc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calc"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="654dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

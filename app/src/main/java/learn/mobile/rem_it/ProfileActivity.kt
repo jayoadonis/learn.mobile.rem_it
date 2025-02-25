@@ -194,28 +194,28 @@ class ProfileActivity : AppCompatActivity() {
                 when( editText ) {
                     tieUserName -> {
                         ProfileActivity.isUserNameValid = !TXT_INPUT.isBlank();
-                        this@ProfileActivity.btnReset.isEnabled = true;
-                        this@ProfileActivity.btnSave.isEnabled = ProfileActivity.isUserNameValid
-                                && ProfileActivity.isEmailValid;
                     }
                     tieEmail -> {
                         ProfileActivity.isEmailValid = (!TXT_INPUT.isBlank()
                                 && ProfileActivity.isValidEmail( TXT_INPUT ));
-                        this@ProfileActivity.btnReset.isEnabled = true;
-                        this@ProfileActivity.btnSave.isEnabled = ProfileActivity.isUserNameValid
-                                && ProfileActivity.isEmailValid;
-
+//                        this@ProfileActivity.btnReset.isEnabled = true;
+//                        this@ProfileActivity.btnSave.isEnabled = ProfileActivity.isUserNameValid
+//                                && ProfileActivity.isEmailValid;
                     }
                     tiePassword -> {
-                        this@ProfileActivity.btnReset.isEnabled = true;
-                        this@ProfileActivity.btnSave.isEnabled  = ProfileActivity.isUserNameValid
-                                && ProfileActivity.isEmailValid;
+//                        this@ProfileActivity.btnReset.isEnabled = true;
+//                        this@ProfileActivity.btnSave.isEnabled  = ProfileActivity.isUserNameValid
+//                                && ProfileActivity.isEmailValid;
                     }
                     else -> {
-                        this@ProfileActivity.btnReset.isEnabled = false;
-                        this@ProfileActivity.btnSave.isEnabled = false;
+//                        this@ProfileActivity.btnReset.isEnabled = false;
+//                        this@ProfileActivity.btnSave.isEnabled = false;
                     }
                 }
+
+                this@ProfileActivity.btnReset.isEnabled = true;
+                this@ProfileActivity.btnSave.isEnabled = ProfileActivity.isUserNameValid
+                        && ProfileActivity.isEmailValid;
 
 //                btnSave.isEnabled = !txt.isBlank() &&
 //                        ( txt != cmpTo || editText == tiePassword );
