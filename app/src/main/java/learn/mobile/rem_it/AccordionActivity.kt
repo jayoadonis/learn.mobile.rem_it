@@ -53,22 +53,11 @@ class AccordionActivity : AppCompatActivity() {
         )
 
         listDataChild["MIDTERM"] = listOf(
-            ActivityItem("activity_001", "public API free and Subscription", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "public API free and Subscription", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "public API free and Subscription", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "public API free and Subscription", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "public API free and Subscription", SimpleCalcActivity::class.java),
+            ActivityItem("activity_001", "public API free and Subscription, [on progress...]", SimpleCalcActivity::class.java),
         )
 
         listDataChild["FINAL"] = listOf(
-            ActivityItem("activity_001", "Description for FINAL activity 001", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "Description for FINAL activity 001", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "Description for FINAL activity 001", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "Description for FINAL activity 001", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "Description for FINAL activity 001", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "public API free and Subscription", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "public API free and Subscription", SimpleCalcActivity::class.java),
-            ActivityItem("activity_001", "Description for FINAL activity 001", SimpleCalcActivity::class.java),
+            ActivityItem("...", "...", SimpleCalcActivity::class.java),
         )
 
         listDataHeader = listDataChild.keys.toList();
