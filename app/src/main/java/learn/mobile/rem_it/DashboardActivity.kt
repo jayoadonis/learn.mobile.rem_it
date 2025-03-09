@@ -21,6 +21,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private lateinit var userDAO: UserDataAccessObject;
 
+    //REM: [TODO] .|. Refactor later...
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,6 +32,14 @@ class DashboardActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_dashboard)
 
         this.sessionManager = SessionManager(this)
+
+        if( !this.sessionManager.isLoggedIn() ) {
+            //REM: [TODO] .|. Refactor later...
+            Toast.makeText(this, "No Active Session found, please register or/and sign in first", Toast.LENGTH_LONG).show();
+            this.sessionManager.clearSession();
+            super.startActivity( Intent(this, MainActivity::class.java) );
+            super.finish();
+        }
 
         val lblDashboard = this.activityDashboardBind.lblDashboardTitle.text.toString();
 //        val listViewTodo = this.activityDashboardBind.listViewTodo;
@@ -59,6 +68,7 @@ class DashboardActivity : AppCompatActivity() {
         };
 
         this.activityDashboardBind.btnDashboardLogOut.setOnClickListener{
+            //REM: [TODO] .|. Refactor later...
             this.sessionManager.clearSession();
             super.startActivity( Intent(this, MainActivity::class.java) );
             super.finish();

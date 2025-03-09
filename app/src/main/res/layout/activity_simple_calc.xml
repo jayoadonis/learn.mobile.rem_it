@@ -4,13 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
     tools:context=".SimpleCalcActivity">
+
+  <Button
+      android:id="@+id/btn_simple_calculator_back"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Back"
+      android:layout_marginBottom="15dp"
+      app:layout_constraintBottom_toTopOf="@+id/inputI"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
   <EditText
       android:id="@+id/inputI"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="76dp"
+      android:layout_marginTop="100dp"
       android:ems="10"
       android:hint="input_1"
       android:inputType="text"
@@ -36,7 +47,7 @@
       android:id="@+id/result"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="48dp"
+      android:layout_marginTop="15dp"
       android:text="TextView"
       android:textSize="34sp"
       app:layout_constraintEnd_toEndOf="parent"
@@ -49,13 +60,13 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="horizontal"
-      app:layout_constraintGuide_begin="20dp" />
+      app:layout_constraintGuide_percent="0.02872777" />
 
   <LinearLayout
       android:id="@+id/linearLayout"
       android:layout_width="363dp"
       android:layout_height="229dp"
-      android:layout_marginTop="50dp"
+      android:layout_marginTop="22dp"
       android:orientation="horizontal"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -109,6 +120,15 @@
           android:layout_margin="15dp"
           android:padding="15dp"
           android:text="Div" />
+
+      <Button
+          android:id="@+id/btnClear"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="15dp"
+          android:padding="15dp"
+          android:text="CLEAR" />
+
     </LinearLayout>
   </LinearLayout>
 

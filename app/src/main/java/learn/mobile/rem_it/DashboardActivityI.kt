@@ -22,6 +22,17 @@ class DashboardActivityI: AppCompatActivity() {
 //        setContentView(R.layout.activity_dashboard_i)
 
         this.sessionManager = SessionManager(this);
+
+
+        if( !this.sessionManager.isLoggedIn() ) {
+            //REM: [TODO] .|. Refactor later...
+            Toast.makeText(this, "No Active Session found, please register or/and sign in first", Toast.LENGTH_LONG).show();
+            this.sessionManager.clearSession();
+            super.startActivity( Intent(this, MainActivity::class.java) );
+            super.finish();
+        }
+
+
         this.userDAO = UserDataAccessObject(this);
         this.activityDashboardBind = ActivityDashboardIBinding.inflate(super.getLayoutInflater());
         super.setContentView(this.activityDashboardBind.root);
@@ -53,9 +64,9 @@ class DashboardActivityI: AppCompatActivity() {
         }
 
         this.activityDashboardBind.btnCalc.setOnClickListener {
-            super.startActivity(
-                Intent( this, SimpleCalcActivity::class.java )
-            );
+            val intent = Intent( this, SimpleCalcActivity::class.java )
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            super.startActivity(intent);
         }
     }
 

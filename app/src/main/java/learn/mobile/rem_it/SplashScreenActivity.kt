@@ -20,7 +20,7 @@ class SplashScreenActivity : AppCompatActivity() {
 //        this.sessionManager = SessionManager(this);
 
         Handler(Looper.getMainLooper()).postDelayed({
-            super.startActivity(Intent(this, MainActivity::class.java))
+            super.startActivity(Intent(this, AccordionActivity::class.java))
             super.finish()
         }, 2000)
 

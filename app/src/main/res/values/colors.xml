@@ -8,6 +8,7 @@
 
 
     <color name="colorPrimary">@color/orange</color>
+    <color name="colorBackgroundSecondary">#FFC062</color>
     <color name="colorSecondary">@color/white</color>
     <color name="colorBackground">@color/bg</color>
     <color name="colorText">@color/blue</color>
