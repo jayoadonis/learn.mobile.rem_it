@@ -25,7 +25,8 @@ class SettingActivity : AppCompatActivity() {
         this.btnBack = this.activitySettingBinding.btnSettingBack;
 
         this.btnBack.setOnClickListener{
-            super.startActivity(Intent(this, DashboardActivityI::class.java));
+//            super.startActivity(Intent(this, DashboardActivityI::class.java));
+            super.finish();
         }
     }
 }

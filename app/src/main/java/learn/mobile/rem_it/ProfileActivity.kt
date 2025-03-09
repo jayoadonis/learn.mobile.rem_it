@@ -163,7 +163,10 @@ class ProfileActivity : AppCompatActivity() {
 
 
         this.btnBack.setOnClickListener {
-            super.startActivity( Intent(this, DashboardActivityI::class.java) );
+//            val intent = Intent( this, DashboardActivityI::class.java )
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+//            super.startActivity(intent);
+            super.finish();
         }
 
         this.btnReset.setOnClickListener {
