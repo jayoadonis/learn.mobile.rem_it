@@ -95,4 +95,12 @@ class MainActivity : AppCompatActivity() {
     private fun navigateToSignUp(): Unit {
         super.startActivity( Intent( this, SignUpActivity::class.java) );
     }
+
+    override fun onResume() {
+        super.onResume()
+        if( this.sessionManager.isLoggedIn() ) {
+            this.navigateToDashboard();
+            super.finish();
+        }
+    }
 }

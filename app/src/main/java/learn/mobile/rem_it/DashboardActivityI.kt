@@ -42,6 +42,8 @@ class DashboardActivityI: AppCompatActivity() {
         var btnProfile = this.activityDashboardBind.btnProfile;
         var btnSetting  = this.activityDashboardBind.btnSetting;
 
+        val btnMenu = this.activityDashboardBind.btnDashboardIMenu;
+
         txtTitle.text = buildString {
             append(txtTitle.text.toString() + ", ")
             append(this@DashboardActivityI.sessionManager.getUserName())
@@ -67,6 +69,13 @@ class DashboardActivityI: AppCompatActivity() {
             val intent = Intent( this, SimpleCalcActivity::class.java )
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             super.startActivity(intent);
+        }
+
+        btnMenu.setOnClickListener{
+
+            val accordionActivty = Intent(this, AccordionActivity::class.java);
+            accordionActivty.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP );
+            super.startActivity(accordionActivty);
         }
     }
 

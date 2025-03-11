@@ -4,6 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ExpandableListView
 import androidx.appcompat.app.AppCompatActivity
+import learn.mobile.rem_it.midterm.activity_i.MapsActivity
+import learn.mobile.rem_it.midterm.activity_i.MapsIActivity
+import learn.mobile.rem_it.midterm.activity_ii.MainNasaImageActivity
+import learn.mobile.rem_it.midterm.activity_ii.MainWeatherActivity
 import learn.mobile.rem_it.models.ActivityItem
 
 class AccordionActivity : AppCompatActivity() {
@@ -31,9 +35,9 @@ class AccordionActivity : AppCompatActivity() {
             val activityItem = listDataChild[group]?.get(childPosition)
             activityItem?.let {
                 //REM: Launch the activity using the stored class
-                val intent = Intent(this, it.activityClass)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                startActivity(intent)
+                val targetActivity = Intent(this, it.activityClass)
+                targetActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                super@AccordionActivity.startActivity(targetActivity)
             }
             true
         }
@@ -53,7 +57,8 @@ class AccordionActivity : AppCompatActivity() {
         )
 
         listDataChild["MIDTERM"] = listOf(
-            ActivityItem("activity_001", "public API free and Subscription, [on progress...]", SimpleCalcActivity::class.java),
+            ActivityItem("activity_001", "Google Map (Free Subscription API)", MapsActivity::class.java),
+            ActivityItem("activity_001a", "Google Map (Free Subscription API)", MainNasaImageActivity::class.java),
         )
 
         listDataChild["FINAL"] = listOf(

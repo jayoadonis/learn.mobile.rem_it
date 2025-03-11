@@ -3,6 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="learn.mobile.rem_it">
 
+<!--    <uses-feature-->
+<!--        android:name="android.hardware.camera"-->
+<!--        android:required="false" />-->
+
+    <!--REM: Required permissions -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<!--    <uses-permission android:name="android.permission.CAMERA"/>-->
+
+    <!--REM: Required permissions for osmdroid -->
+<!--    <uses-permission android:name="android.permission.INTERNET" />-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -57,9 +74,29 @@
             android:name=".PrototypeWithFigmaActivity"
             android:exported="false"/>
         <activity
+            android:name=".midterm.activity_i.MapsActivity"
+            android:exported="false"
+            />
+        <activity
+            android:name=".midterm.activity_ii.MainWeatherActivity"
+            android:exported="false" />
+        <activity
             android:name=".AccordionActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".midterm.activity_ii.MainNasaImageActivity"
+            android:exported="false"
+            />
+
+
+        <!--REM: ARCore requirement -->
+<!--        <meta-data-->
+<!--            android:name="com.google.ar.core"-->
+<!--            android:value="required" />-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAkkGW7iX3u5ie5o6IWlPLfotN3RCyp82c"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
